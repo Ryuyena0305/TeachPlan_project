@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LectureDto {
+    private int tnum ;
     private int lnum ;
     private int stnum ;
     private String week;
