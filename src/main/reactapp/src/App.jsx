@@ -1,35 +1,21 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import Sidebar from "./components/SideBar.jsx";
+import Header from "./components/Header.jsx";
+import Maincontent from "./components/MainContent.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div style={{ display: "flex", height: "100vh" }}>
+      {/* 왼쪽 사이드바 */}
+      <Sidebar />
+
+      {/* 오른쪽 전체 영역 (Header + Content) */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+        <Header /> {/* 여기서 내부 로고 위치를 pl: 240px 등으로 조정해야 함 */}
+        <Maincontent />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
