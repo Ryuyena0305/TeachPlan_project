@@ -1,4 +1,8 @@
 /* Sidebar.css */
+a{
+  text-decoration: none;
+  color:rgb(73, 73, 73);
+}
 .custom-sidebar {
   width: 220px;
   height: calc(100vh - 64px);

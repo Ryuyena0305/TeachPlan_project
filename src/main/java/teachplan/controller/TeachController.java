@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/teachers")
+@CrossOrigin("http://localhost:5173")
 public class TeachController {
     @Autowired
     private TeachService teachService;

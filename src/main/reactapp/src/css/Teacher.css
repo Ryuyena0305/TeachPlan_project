@@ -1,0 +1,84 @@
+#container {
+  padding: 10px 24px;
+  font-family: 'Segoe UI', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+  text-align: left; /* 혹시라도 명시적으로 왼쪽 정렬 유지 */
+}
+
+/* 공통 텍스트 가운데 정렬 */
+.listContent,
+table,
+thead th,
+tbody td,
+.detail-btn {
+  text-align: center;
+}
+
+.listContent {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.listContent:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+thead th {
+  padding: 14px 18px;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+  border-radius: 6px;
+}
+
+tbody td {
+  padding: 14px 18px;
+  color: #374151;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.contentView:hover {
+  background-color: #f9fafb;
+}
+
+.detail-btn {
+  background: #4facfe;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 132, 255, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.detail-btn:hover {
+  background:  #0072ff;
+  box-shadow: 0 4px 10px rgba(0, 115, 255, 0.25);
+}

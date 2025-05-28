@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/lectures")
+@CrossOrigin("http://localhost:5173")
 public class LectureController {
     @Autowired
     private LectureService lectureService;
