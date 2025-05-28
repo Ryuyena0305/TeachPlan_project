@@ -1,0 +1,70 @@
+/* Sidebar.css */
+.custom-sidebar {
+  width: 220px;
+  height: calc(100vh - 64px);
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  padding: 16px;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 64px; /* 헤더 높이만큼 아래로 */
+  left: 0;
+  z-index: 5; /* 헤더보다 낮게 */
+  overflow-y: auto;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 32px;
+  padding: 0 8px;
+}
+
+.logo {
+  height: 24px;
+}
+
+.logo-text {
+  color: #1B9CFC;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.menu-group {
+}
+
+.menu-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #999;
+  margin-bottom: 8px;
+  padding-left: 8px;
+  text-transform: uppercase;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  padding: 10px 12px;
+  border-radius: 6px;
+  color: #444;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 14px;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+  color: #1B9CFC;
+}
