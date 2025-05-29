@@ -10,6 +10,7 @@ import { Routes, Route } from "react-router-dom";
 // import ByTeacher from "../pages/ByTeacher.jsx";
 // import Extra from "../pages/Extra.jsx";
 import Teacher from "../pages/Teacher";
+import Teacherview from "../pages/Teacherview";
 
 function MainContent() {
   return (
@@ -22,6 +23,7 @@ function MainContent() {
       <Route path="/by-teacher" element={<ByTeacher />} />
       <Route path="/extra" element={<Extra />} /> */}
       <Route path="/teacher" element={<Teacher />} />
+      <Route path="/teacherview" element={<Teacherview />} />
       {/* 기본 페이지 */}
       {/* <Route path="*" element={<Dashboard />} /> */}
     </Routes>
