@@ -11,6 +11,8 @@ import { Routes, Route } from "react-router-dom";
 // import Extra from "../pages/Extra.jsx";
 import Teacher from "../pages/Teacher";
 import Teacherview from "../pages/Teacherview";
+import Student from "../pages/Student";
+import Studentview from "../pages/Studentview"
 
 function MainContent() {
   return (
@@ -24,6 +26,8 @@ function MainContent() {
       <Route path="/extra" element={<Extra />} /> */}
       <Route path="/teacher" element={<Teacher />} />
       <Route path="/teacherview" element={<Teacherview />} />
+      <Route path="/student" element={<Student />} />
+      <Route path="/studentview" element={<Studentview />} />
       {/* 기본 페이지 */}
       {/* <Route path="*" element={<Dashboard />} /> */}
     </Routes>

@@ -1,24 +1,33 @@
 import React, { use, useEffect, useState } from "react";
 import axios from "axios";
-import "../css/Teacherview.css";
+import "../css/Studentview.css";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 export default function Teacher(props) {
+    // stnum int unsigned auto_increment,
+    // stname varchar(20) not null,
+    //     stphone varchar(13) unique not null,
+    // pphone varchar(13) unique not null,
+    // stschool varchar(20),
+    // stgrade int ,
+    // tnum int unsigned,
+    // ststate boolean default 1,
+    // stnote varchar(1000),
 
     const [ searchParams ] = useSearchParams();
-    const searchTid = searchParams.get('tid');
+    const searchStnum = searchParams.get('stnum');
 
-    const[teacher, setTeacher] = useState({tname:'',tphone:'',tbirth:'',tnote:''});
+    const[teacher, setTeacher] = useState({stname:'', stphone:'',pphone:'',stschool:'',stgrade:'',tnum:'',ststate:'',stnote:''});
 
     const navigate = useNavigate();
 
     useEffect(()=>{
         onView();
-    },[searchTid])
+    },[searchStnum])
 
     const onView = async () => {
         try{
-            const response = await axios.get(`http://localhost:8080/api/teachers/${searchTid}`)
+            const response = await axios.get(`http://localhost:8080/api/students/${searchTid}`)
             setTeacher(response.data);
             console.log(response);
         }catch(error){
