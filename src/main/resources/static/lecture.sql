@@ -41,6 +41,8 @@ insert into student (stname,stphone,pphone,stschool,stgrade,tnum,ststate,stnote)
 ('조병현','010-1111-2222','010-1111-2223','온양중학교','1',2,1,'');
 insert into student (stname,stphone,pphone,stschool,stgrade,tnum,ststate,stnote) values 
 ('김민','010-1111-2224','010-1111-2225','설화중','2',1,1,'');
+insert into student (stname,stphone,pphone,stschool,stgrade,tnum,ststate,stnote) values
+('김성현','010-1111-2227','010-1111-2228','설화중','3',2,0,'');
 
 create table lecture(
 	lnum int unsigned auto_increment,
