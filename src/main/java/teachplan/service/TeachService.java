@@ -2,10 +2,8 @@ package teachplan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+import teachplan.model.dto.StudentDto;
 import teachplan.model.dto.TeachDto;
 import teachplan.model.mapper.TeachMapper;
 
@@ -28,8 +26,11 @@ public class TeachService {
         return teachMapper.allGet();
     }
 
+
+
     public TeachDto  teachGet(int tnum){
         System.out.println("TeachService.teachGet");
+        System.out.println("tnum = " + tnum);
         return teachMapper.teachGet(tnum);
     }
 

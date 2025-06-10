@@ -27,11 +27,18 @@ public class StudentService {
         return studentMapper.allGet();
     }
 
+    public List<StudentDto> printGroups( int tnum){
+        System.out.println("StudentService.printGroups");
+        System.out.println("tnum = " + tnum);
+        return studentMapper.printGroups(tnum);
+    }
+
     public StudentDto  studentGet( int stnum){
         System.out.println("StudentService.studentGet");
         System.out.println("stnum = " + stnum);
         return studentMapper.studentGet(stnum);
     }
+
 
     public int onUpdate( StudentDto studentDto){
         System.out.println("StudentController.onUpdate");

@@ -17,6 +17,8 @@ public interface TeachMapper {
     @Select("select * from teacher")
     public List<TeachDto> allGet();
 
+
+
     @Select("select * from teacher where tnum=#{tnum}")
     public TeachDto teachGet(int tnum);
 

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "../css/Teacher.css";
 
 export default function Teacher() {
   const [teachers, setTeachers] = useState([]);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     onView();
-  }, []); 
+  }, []);
 
   const onView = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/teachers");
       console.log(response);
-      setTeachers(response.data); 
+      setTeachers(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -26,11 +28,11 @@ export default function Teacher() {
         <table>
           <thead>
             <tr>
-              <th >이름</th>
-              <th >연락처</th>
-              <th >생년월일</th>
-              <th >메모</th>
-              <th >비고</th>
+              <th>이름</th>
+              <th>연락처</th>
+              <th>생년월일</th>
+              <th>메모</th>
+              <th>비고</th>
             </tr>
           </thead>
           <tbody>
@@ -39,9 +41,14 @@ export default function Teacher() {
                 <td>{teacher.tname}</td>
                 <td>{teacher.tphone}</td>
                 <td>{teacher.tbirth}</td>
-                <td >{teacher.tnote || "-"}</td>
+                <td>{teacher.tnote || "-"}</td>
                 <td>
-                  <button className="detail-btn">상세조회</button>
+                  <button
+                    className="detail-btn"
+                    onClick={() => navigate(`/teacherview/${teacher.tnum}`)} 
+                  >
+                    상세조회
+                  </button>
                 </td>
               </tr>
             ))}

@@ -1,28 +1,67 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "../css/Teacher.css";
+import "../css/Student.css";
 
 export default function Student() {
-  const [students, setStudents] = useState([]);
+  const [students, setStudents] = useState([]); // 학생 목록
+  const [teachers, setTeachers] = useState([]); // 교사 목록
+  const [selectedTeacher, setSelectedTeacher] = useState(""); // 선택된 교사
 
   useEffect(() => {
-    onView();
-  }, []); 
+    onTeacherView();
+    onView(); 
+  }, []);
+
 
   const onView = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/students");
-      console.log(response);
-      setStudents(response.data); 
+      setStudents(response.data); // 전체 학생 
     } catch (error) {
       console.log(error);
     }
   };
-//stname:'', stphone:'',pphone:'',stschool:'',stgrade:'',tnum:'',ststate:'',stnote:''
+
+  const onTeacherView = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/api/teachers");
+      setTeachers(response.data); //셀렉박스스 교사 목록
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // 교사 선택 시 해당 교사에 맞는 학생 목록 불러오기
+  const handleTeacherChange = async (event) => {
+    const selectedTnum = event.target.value;
+    setSelectedTeacher(selectedTnum);
+
+    if (selectedTnum) {
+      // 교사가 선택되었으면 해당 교사의 학생 목록을 가져옴
+      try {
+        const response = await axios.get(`http://localhost:8080/api/students/teach/${selectedTnum}`);
+        setStudents(response.data); // 해당 교사에 속한 학생들만 
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      // 전체조회일 경우 모든 학생
+      onView();
+    }
+  };
+
   return (
     <div id="container">
       <h1>학생 조회</h1>
       <div className="listContent">
+        <select onChange={handleTeacherChange}>
+          <option value="">전체조회</option>
+          {teachers.map((teacher) => (
+            <option key={teacher.tnum} value={teacher.tnum}>
+              {teacher.tname}
+            </option>
+          ))}
+        </select>
         <table>
           <thead>
             <tr>

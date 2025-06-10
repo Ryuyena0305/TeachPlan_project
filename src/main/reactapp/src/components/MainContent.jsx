@@ -25,9 +25,10 @@ function MainContent() {
       <Route path="/by-teacher" element={<ByTeacher />} />
       <Route path="/extra" element={<Extra />} /> */}
       <Route path="/teacher" element={<Teacher />} />
-      <Route path="/teacherview" element={<Teacherview />} />
+      <Route path="/teacherview/:tid" element={<Teacherview />} />
       <Route path="/student" element={<Student />} />
-      <Route path="/studentview" element={<Studentview />} />
+      <Route path="/studentview/:stnum" element={<Studentview />} />
+
       {/* 기본 페이지 */}
       {/* <Route path="*" element={<Dashboard />} /> */}
     </Routes>

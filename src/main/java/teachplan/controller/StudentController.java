@@ -25,6 +25,13 @@ public class StudentController {
         System.out.println("StudentController.allGet");
         return studentService.allGet();
     }
+
+    @GetMapping("/teach/{tnum}")
+    public List<StudentDto> printGroups(@PathVariable("tnum") int tnum){
+        System.out.println("StudentController.printGroups");
+        return studentService.printGroups(tnum);
+    }
+
     @GetMapping("/{stnum}")
     public StudentDto  studentGet(@PathVariable("stnum") int stnum){
         System.out.println("StudentController.teachGet");
