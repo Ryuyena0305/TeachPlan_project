@@ -55,7 +55,7 @@ export default function Student() {
       <h1>학생 조회</h1>
       <div className="listContent">
         <select onChange={handleTeacherChange}>
-          <option value="">전체조회</option>
+          <option value="">담당 강사</option>
           {teachers.map((teacher) => (
             <option key={teacher.tnum} value={teacher.tnum}>
               {teacher.tname}

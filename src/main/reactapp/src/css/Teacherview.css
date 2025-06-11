@@ -1,0 +1,63 @@
+#container {
+  padding: 10px 24px;
+  font-family: 'Segoe UI', 'Noto Sans KR', system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  text-align: left;
+}
+
+/* 상세 조회 전체 박스 */
+.tview {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.tview:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 라벨 (subTit) 스타일 */
+.subTit {
+  font-weight: 600;
+  font-size: 15px;
+  color: #1e293b;
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+
+/* 입력 필드 스타일 */
+.subCont {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  color: #374151;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.subCont:focus {
+  border-color: #4facfe;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.2);
+}
+
+/* textarea용 입력도 같은 스타일 유지 */
+input[type="textarea"] {
+  height: 100px;
+  resize: vertical;
+}
