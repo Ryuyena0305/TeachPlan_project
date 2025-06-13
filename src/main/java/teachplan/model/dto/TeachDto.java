@@ -11,7 +11,9 @@ public class TeachDto {
     private String tname;
     private String tbirth;
     private String tphone;
+    private String tnote;
     private String id;
     private String pwd;
+
 
 }

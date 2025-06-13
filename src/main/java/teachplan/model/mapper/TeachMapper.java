@@ -22,6 +22,6 @@ public interface TeachMapper {
     @Select("select * from teacher where tnum=#{tnum}")
     public TeachDto teachGet(int tnum);
 
-    @Update("update teacher set tname = #{tname}, tbirth = #{tbirth}, tphone = #{tphone}, id = #{id}, pwd = #{pwd} WHERE tnum = #{tnum}")
+    @Update("update teacher set tname = #{tname}, tbirth = #{tbirth}, tphone = #{tphone}, tnote = #{tnote}, id = #{id}, pwd = #{pwd} WHERE tnum = #{tnum}")
     public int onUpdate( TeachDto teachDto );
 }
