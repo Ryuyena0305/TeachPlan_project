@@ -31,7 +31,6 @@ export default function Teacher() {
               <th>이름</th>
               <th>연락처</th>
               <th>생년월일</th>
-              <th>메모</th>
               <th>비고</th>
             </tr>
           </thead>
@@ -41,11 +40,10 @@ export default function Teacher() {
                 <td>{teacher.tname}</td>
                 <td>{teacher.tphone}</td>
                 <td>{teacher.tbirth}</td>
-                <td>{teacher.tnote || "-"}</td>
                 <td>
                   <button
                     className="detail-btn"
-                    onClick={() => navigate(`/teacherview/${teacher.tnum}`)} 
+                    onClick={() => navigate(`/teacherview?tnum=${teacher.tnum}`)} 
                   >
                     상세조회
                   </button>

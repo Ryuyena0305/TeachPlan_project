@@ -25,7 +25,7 @@ export default function Student() {
   const onTeacherView = async () => {
     try {
       const response = await axios.get("http://localhost:8080/api/teachers");
-      setTeachers(response.data); //셀렉박스스 교사 목록
+      setTeachers(response.data); //셀렉박스 교사 목록
     } catch (error) {
       console.log(error);
     }
