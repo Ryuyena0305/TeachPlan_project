@@ -15,13 +15,13 @@ public interface StudentMapper {
             "values (#{stname},#{stphone},#{pphone},#{stschool},#{stgrade},#{tnum},1,#{stnote},#{tnum})")
     public int onPost(StudentDto studentDto);
 
-    @Select("SELECT s.*, t.tname FROM student s JOIN teacher t ON s.tnum = t.tnum order by ststate asc;")
+    @Select("SELECT s.*, t.tname FROM student s JOIN teacher t ON s.tnum = t.tnum order by ststate desc;")
     public List<StudentDto> allGet();
 
     @Select("SELECT s.*, t.tname FROM student s JOIN teacher t ON s.tnum = t.tnum WHERE s.tnum = #{tnum}")
     public List<StudentDto> printGroups(int tnum);
 
-    @Select("select * from student where stnum=#{stnum}")
+    @Select("select *,t.tname from student s JOIN teacher t ON s.tnum = t.tnum where stnum=#{stnum}")
     public StudentDto  studentGet( int stnum);
 
     @Update("update student set stname=#{stname},stphone=#{stphone},pphone=#{pphone},stschool=#{stschool},stgrade=#{stgrade},tnum=#{tnum},ststate=#{ststate},stnote=#{stnote} where stnum=#{stnum}")
