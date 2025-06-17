@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../css/Student.css";
 
@@ -6,6 +7,7 @@ export default function Student() {
   const [students, setStudents] = useState([]); // 학생 목록
   const [teachers, setTeachers] = useState([]); // 교사 목록
   const [selectedTeacher, setSelectedTeacher] = useState(""); // 선택된 교사
+  const navigate = useNavigate();
 
   useEffect(() => {
     onTeacherView();
@@ -55,7 +57,7 @@ export default function Student() {
       <h1>학생 조회</h1>
       <div className="listContent">
         <select onChange={handleTeacherChange}>
-          <option value="">담당 강사</option>
+          <option value="">전체 조회</option>
           {teachers.map((teacher) => (
             <option key={teacher.tnum} value={teacher.tnum}>
               {teacher.tname}
@@ -82,9 +84,14 @@ export default function Student() {
                 <td>{student.stschool}</td>
                 <td>{student.stgrade}</td>
                 <td>{student.tname}</td>
-                <td>{student.tname ? "재원중" : "미등록"}</td>
+                <td>{student.ststate ? "재원중" : "휴원중"}</td>
                 <td>
-                  <button className="detail-btn">상세조회</button>
+                  <button
+                    className="detail-btn"
+                    onClick={() => navigate(`/studentview?stnum=${student.stnum}`)} 
+                  >
+                    상세조회
+                  </button>
                 </td>
               </tr>
             ))}
