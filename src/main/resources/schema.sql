@@ -31,7 +31,7 @@ create table lecture(
     endtime time not null,
     lecturetype boolean default 1,
     constraint primary key (lnum),
-      constraint foreign key (stnum) references student(stnum)
+    constraint foreign key (stnum) references student(stnum)
 );
 
 create table homework(
@@ -40,6 +40,7 @@ create table homework(
     progress varchar(100) not null,
     textbook varchar(20) not null,
     page varchar(30) not null,
+    hdate date not null,
     done boolean default 0 ,
     constraint primary key (lognum),
 	constraint foreign key (stnum) references student(stnum)

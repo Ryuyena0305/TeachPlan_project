@@ -42,18 +42,18 @@ insert into lecture(stnum,week,starttime,endtime,lecturetype) values
 (7,'화','16:00:00','18:00:00',1),(7,'목','16:00:00','18:00:00',1);
 
 
-insert into homework(stnum,progress,textbook,page,done) values
-(1,'삼차함수 그래프의 활용','라이트 쎈2','110~115',0);
-insert into homework(stnum,progress,textbook,page,done) values
-(2,'삼차함수 그래프의 활용','라이트 쎈2','110~116',0);
-insert into homework(stnum,progress,textbook,page,done) values
-(3,'삼각비','쎈2','80~88',0);
-insert into homework(stnum,progress,textbook,page,done) values
-(4,'행렬의 기본','수학의 정석','66~57',1);
-insert into homework(stnum,progress,textbook,page,done) values
-(5,'삼차함수의 미분','풍산자','40~43',1);
-insert into homework(stnum,progress,textbook,page,done) values
-(5,'삼차함수의 미분','풍산자','49~52',0);
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(1,'삼차함수 그래프의 활용','라이트 쎈2','110~115',0,'2025-06-25');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(2,'삼차함수 그래프의 활용','라이트 쎈2','110~116',0,'2025-06-25');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(3,'삼각비','쎈2','80~88',0,'2025-06-28');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(4,'행렬의 기본','수학의 정석','66~57',1,'2025-06-24');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(5,'삼차함수의 미분','풍산자','40~43',1,'2025-06-29');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(5,'삼차함수의 미분','풍산자','49~52',0,'2025-06-25');
 
 --select * from teacher;
 --select * from student;
