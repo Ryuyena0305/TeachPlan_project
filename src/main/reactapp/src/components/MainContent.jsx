@@ -9,11 +9,12 @@ import { Routes, Route } from "react-router-dom";
 // import Weekly from "../pages/Weekly.jsx";
 // import ByTeacher from "../pages/ByTeacher.jsx";
 // import Extra from "../pages/Extra.jsx";
-import Homework from "../pages/Homework";
+import Homework from "../pages/homework.jsx";
 import Teacher from "../pages/Teacher";
 import Teacherview from "../pages/Teacherview";
 import Student from "../pages/Student";
 import Studentview from "../pages/Studentview"
+import HomeworkDetail from "../pages/homeworkdetail.jsx";
 
 function MainContent() {
   return (
@@ -25,6 +26,7 @@ function MainContent() {
       <Route path="/weekly" element={<Weekly />} />
       <Route path="/by-teacher" element={<ByTeacher />} />
       <Route path="/extra" element={<Extra />} /> */}
+     <Route path="/homeworkdetail/:stnum" element={<HomeworkDetail />} />
       <Route path="/homework" element={<Homework/>}/>
       <Route path="/teacher" element={<Teacher />} />
       <Route path="/teacherview" element={<Teacherview />} />
