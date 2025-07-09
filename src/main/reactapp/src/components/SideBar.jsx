@@ -18,7 +18,7 @@ const Sidebar = () => {
       title: "학생 관리🧑🏻‍🎓",
       items: [
         { label: "학생 조회", path: "/student" },
-        { label: "학생별 진도 및 숙제", path: "/progress" },
+        { label: "학생별 진도 및 숙제", path: "/homework" },
       ],
     },
     {

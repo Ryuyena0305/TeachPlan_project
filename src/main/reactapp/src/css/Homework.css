@@ -1,0 +1,30 @@
+.home-container {
+  padding: 20px;
+}
+
+.filter-bar {
+  margin-bottom: 20px;
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.student-table th, .student-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.student-table th {
+  background-color: #f2f2f2;
+}
+
+.homework-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.detail-row {
+  background-color: #fafafa;
+}
