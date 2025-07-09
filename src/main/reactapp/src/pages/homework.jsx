@@ -14,6 +14,7 @@ export default function Home() {
     fetchTeachers();
     fetchStudents();
   }, []);
+  const navigate = useNavigate();
 
   const fetchTeachers = async () => {
     try {
@@ -99,12 +100,8 @@ export default function Home() {
                   <td>{s.stgrade}학년</td>
                   <td>{latestProgress}</td>
                   <td>
-                    <button
-                      onClick={() =>
-                        setOpenDetail(openDetail === s.stnum ? null : s.stnum)
-                      }
-                    >
-                      {openDetail === s.stnum ? "닫기" : "진도 상세보기"}
+                    <button onClick={() => navigate(`/homeworkdetail/${s.stnum}`)}>
+                    진도 상세보기
                     </button>
                   </td>
                 </tr>
