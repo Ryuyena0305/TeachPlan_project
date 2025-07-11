@@ -11,7 +11,7 @@ export default function Student() {
 
   useEffect(() => {
     onTeacherView();
-    onView(); 
+    onView();
   }, []);
 
 
@@ -56,14 +56,17 @@ export default function Student() {
     <div id="container">
       <h1>학생 조회</h1>
       <div className="listContent">
-        <select onChange={handleTeacherChange}>
-          <option value="">전체 조회</option>
-          {teachers.map((teacher) => (
-            <option key={teacher.tnum} value={teacher.tnum}>
-              {teacher.tname}
-            </option>
-          ))}
-        </select>
+        <div className="filter-bar">
+          <label>담당 교사 : </label>
+          <select onChange={handleTeacherChange}>
+            <option value="">전체 조회</option>
+            {teachers.map((teacher) => (
+              <option key={teacher.tnum} value={teacher.tnum}>
+                {teacher.tname}
+              </option>
+            ))}
+          </select>
+        </div>
         <table>
           <thead>
             <tr>
@@ -88,7 +91,7 @@ export default function Student() {
                 <td>
                   <button
                     className="detail-btn"
-                    onClick={() => navigate(`/studentview?stnum=${student.stnum}`)} 
+                    onClick={() => navigate(`/studentview?stnum=${student.stnum}`)}
                   >
                     상세조회
                   </button>

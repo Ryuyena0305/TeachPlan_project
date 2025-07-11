@@ -62,76 +62,77 @@ export default function Home() {
   };
 
   return (
-    <div className="home-container">
-      <h2>📚 학생 진도 및 숙제 현황</h2>
+    <div id="container">
+      <h1> 학생 진도 및 숙제 현황</h1>
+      <div className="listContent">
+        <div className="filter-bar">
+          <label>담당 교사 :</label>
+          <select value={selectedTeacher} onChange={handleTeacherChange}>
+            <option value="">전체 조회</option>
+            {teachers.map((t) => (
+              <option key={t.tnum} value={t.tnum}>
+                {t.tname}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="filter-bar">
-        <label>담당 교사:</label>
-        <select value={selectedTeacher} onChange={handleTeacherChange}>
-          <option value="">전체 조회</option>
-          {teachers.map((t) => (
-            <option key={t.tnum} value={t.tnum}>
-              {t.tname}
-            </option>
-          ))}
-        </select>
-      </div>
+        <table className="student-table">
+          <thead>
+            <tr>
+              <th>이름</th>
+              <th>학교</th>
+              <th>학년</th>
+              <th>최근 진도</th>
+              <th>상세</th>
+            </tr>
+          </thead>
+          <tbody>
+            {students.map((s) => {
+              const studentHomework = homeworks[s.stnum] || [];
+              const latestProgress = studentHomework.length > 0 ? studentHomework[studentHomework.length - 1].progress : "진도 없음";
 
-      <table className="student-table">
-        <thead>
-          <tr>
-            <th>이름</th>
-            <th>학교</th>
-            <th>학년</th>
-            <th>최근 진도</th>
-            <th>상세</th>
-          </tr>
-        </thead>
-        <tbody>
-          {students.map((s) => {
-            const studentHomework = homeworks[s.stnum] || [];
-            const latestProgress = studentHomework.length > 0 ? studentHomework[studentHomework.length - 1].progress : "진도 없음";
-
-            return (
-              <React.Fragment key={s.stnum}>
-                <tr>
-                  <td>{s.stname}</td>
-                  <td>{s.stschool}</td>
-                  <td>{s.stgrade}학년</td>
-                  <td>{latestProgress}</td>
-                  <td>
-                    <button onClick={() => navigate(`/homeworkdetail/${s.stnum}`)}>
-                    진도 상세보기
-                    </button>
-                  </td>
-                </tr>
-                {openDetail === s.stnum && (
-                  <tr className="detail-row">
-                    <td colSpan="6">
-                      <ul className="homework-list">
-                        {studentHomework.length === 0 ? (
-                          <li>진도 기록이 없습니다.</li>
-                        ) : (
-                          studentHomework.map((hw) => (
-                            <li key={hw.lognum}>
-                              <input
-                                type="checkbox"
-                                checked={hw.done}
-                                readOnly
-                              />
-                              {` ${hw.progress} - [${hw.textbook}] p.${hw.page}`}
-                            </li>
-                          ))
-                        )}
-                      </ul>
+              return (
+                <React.Fragment key={s.stnum}>
+                  <tr>
+                    <td>{s.stname}</td>
+                    <td>{s.stschool}</td>
+                    <td>{s.stgrade}학년</td>
+                    <td>{latestProgress}</td>
+                    <td>
+                      <button onClick={() => navigate(`/homeworkdetail/${s.stnum}`)}>
+                        진도 상세보기
+                      </button>
                     </td>
                   </tr>
-                )}
-              </React.Fragment>
-            );
-          })}
-        </tbody>
-      </table>
+                  {openDetail === s.stnum && (
+                    <tr className="detail-row">
+                      <td colSpan="6">
+                        <ul className="homework-list">
+                          {studentHomework.length === 0 ? (
+                            <li>진도 기록이 없습니다.</li>
+                          ) : (
+                            studentHomework.map((hw) => (
+                              <li key={hw.lognum}>
+                                <input
+                                  type="checkbox"
+                                  checked={hw.done}
+                                  readOnly
+                                />
+                                {` ${hw.progress} - [${hw.textbook}] p.${hw.page}`}
+                              </li>
+                            ))
+                          )}
+                        </ul>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
