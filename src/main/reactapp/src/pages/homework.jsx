@@ -4,17 +4,15 @@ import axios from "axios";
 import "../css/Homework.css";
 
 export default function Home() {
-  const [students, setStudents] = useState([]);
+  const [progressData, setProgressData] = useState([]);
   const [teachers, setTeachers] = useState([]);
   const [selectedTeacher, setSelectedTeacher] = useState("");
-  const [homeworks, setHomeworks] = useState({});
-  const [openDetail, setOpenDetail] = useState(null); // 열려 있는 상세보기 학생 번호
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchTeachers();
-    fetchStudents();
+    fetchProgress(); // 변경
   }, []);
-  const navigate = useNavigate();
 
   const fetchTeachers = async () => {
     try {
@@ -25,45 +23,34 @@ export default function Home() {
     }
   };
 
-  const fetchStudents = async () => {
+  const fetchProgress = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/students");
-      setStudents(res.data);
-      // 각 학생별 숙제도 병렬로 불러옴
-      res.data.forEach((student) => fetchHomework(student.stnum));
+      const res = await axios.get("http://localhost:8080/api/progress/student");
+      setProgressData(res.data);
     } catch (error) {
-      console.error("학생 조회 오류", error);
-    }
-  };
-
-  const fetchHomework = async (stnum) => {
-    try {
-      const res = await axios.get(`http://localhost:8080/api/homeworks/${stnum}`);
-      setHomeworks((prev) => ({ ...prev, [stnum]: res.data }));
-    } catch (error) {
-      console.error("숙제 조회 오류", error);
+      console.error("진도 조회 오류", error);
     }
   };
 
   const handleTeacherChange = async (e) => {
     const tnum = e.target.value;
     setSelectedTeacher(tnum);
+
     if (tnum) {
       try {
-        const res = await axios.get(`http://localhost:8080/api/students/teach/${tnum}`);
-        setStudents(res.data);
-        res.data.forEach((student) => fetchHomework(student.stnum));
+        const res = await axios.get(`http://localhost:8080/api/progress/student?tnum=${tnum}`);
+        setProgressData(res.data);
       } catch (error) {
-        console.error("교사별 학생 조회 오류", error);
+        console.error("교사별 진도 조회 오류", error);
       }
     } else {
-      fetchStudents();
+      fetchProgress();
     }
   };
 
   return (
     <div id="container">
-      <h1> 학생 진도 및 숙제 현황</h1>
+      <h1>학생 진도 및 숙제 현황</h1>
       <div className="listContent">
         <div className="filter-bar">
           <label>담당 교사 :</label>
@@ -88,48 +75,19 @@ export default function Home() {
             </tr>
           </thead>
           <tbody>
-            {students.map((s) => {
-              const studentHomework = homeworks[s.stnum] || [];
-              const latestProgress = studentHomework.length > 0 ? studentHomework[studentHomework.length - 1].progress : "진도 없음";
-
-              return (
-                <React.Fragment key={s.stnum}>
-                  <tr>
-                    <td>{s.stname}</td>
-                    <td>{s.stschool}</td>
-                    <td>{s.stgrade}학년</td>
-                    <td>{latestProgress}</td>
-                    <td>
-                      <button onClick={() => navigate(`/homeworkdetail/${s.stnum}`)}>
-                        진도 상세보기
-                      </button>
-                    </td>
-                  </tr>
-                  {openDetail === s.stnum && (
-                    <tr className="detail-row">
-                      <td colSpan="6">
-                        <ul className="homework-list">
-                          {studentHomework.length === 0 ? (
-                            <li>진도 기록이 없습니다.</li>
-                          ) : (
-                            studentHomework.map((hw) => (
-                              <li key={hw.lognum}>
-                                <input
-                                  type="checkbox"
-                                  checked={hw.done}
-                                  readOnly
-                                />
-                                {` ${hw.progress} - [${hw.textbook}] p.${hw.page}`}
-                              </li>
-                            ))
-                          )}
-                        </ul>
-                      </td>
-                    </tr>
-                  )}
-                </React.Fragment>
-              );
-            })}
+            {progressData.map((s) => (
+              <tr key={s.stnum}>
+                <td>{s.stname}</td>
+                <td>{s.stschool}</td>
+                <td>{s.stgrade}학년</td>
+                <td>{s.progress || "진도 없음"}</td>
+                <td>
+                  <button onClick={() => navigate(`/homeworkdetail/${s.stnum}`)}>
+                    진도 상세보기
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
