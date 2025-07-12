@@ -26,6 +26,12 @@ public class HomeworkController {
         System.out.println("HomeworkController.allGet");
         return homeworkService.allGet();
     }
+
+    @GetMapping("/student")
+    public List<HomeworkDto> studentGet(){
+        System.out.println("HomeworkController.studentGet");
+        return homeworkService.studentGet();
+    }
     @GetMapping("/{lognum}")
     public HomeworkDto homeworkGet(@PathVariable("lognum") int lognum){
         System.out.println("HomeworkController.homeworkGet");

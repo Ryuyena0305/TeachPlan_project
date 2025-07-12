@@ -28,6 +28,11 @@ public class HomeworkService {
         return homeworkMapper.allGet();
     }
 
+    public List<HomeworkDto> studentGet(){
+        System.out.println("HomeworkService.studentGet");
+        return homeworkMapper.studentGet();
+    }
+
 
     public HomeworkDto homeworkGet( int lognum){
         System.out.println("HomeworkService.homeworkGet");

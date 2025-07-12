@@ -19,6 +19,9 @@ public interface HomeworkMapper {
     @Select("select * from homework")
     public List<HomeworkDto> allGet();
 
+    @Select("select student.stnum, student.stname,student.stschool,student.stgrade,(select progress from homework where homework.stnum=student.stnum order by lognum desc limit 1) as progress from student;")
+    public List<HomeworkDto> studentGet();
+
     @Select("select * from homework where lognum = #{lognum}")
     public HomeworkDto homeworkGet( int lognum);
 
