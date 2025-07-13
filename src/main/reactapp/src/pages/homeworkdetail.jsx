@@ -77,7 +77,7 @@ export default function HomeworkDetail() {
         <tbody>
           {homeworks.map(hw => (
             <tr key={hw.lognum} className={hw.done ? "completed-row" : ""}>
-              <td>{new Date(hw.regdate || Date.now()).toLocaleDateString()}</td>
+              <td>{hw.hdate }</td>
               <td>{hw.progress}</td>
               <td>{hw.textbook} {hw.page}</td>
               <td>
