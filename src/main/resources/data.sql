@@ -43,7 +43,9 @@ insert into lecture(stnum,week,starttime,endtime,lecturetype) values
 
 
 insert into homework(stnum,progress,textbook,page,done,hdate) values
-(1,'삼차함수 그래프의 활용','라이트 쎈2','110~115',0,'2025-06-25');
+(1,'삼차함수 그래프','라이트 쎈2','100~109',0,'2025-06-25');
+insert into homework(stnum,progress,textbook,page,done,hdate) values
+(1,'삼차함수 그래프의 활용','라이트 쎈2','110~115',0,'2025-06-26');
 insert into homework(stnum,progress,textbook,page,done,hdate) values
 (2,'삼차함수 그래프의 활용','라이트 쎈2','110~116',0,'2025-06-25');
 insert into homework(stnum,progress,textbook,page,done,hdate) values
