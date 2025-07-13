@@ -16,5 +16,7 @@ public class HomeworkDto {
     private String page;
     private boolean done;
     private String stname;
+    private String hdate;
+
 
 }
