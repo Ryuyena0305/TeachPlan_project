@@ -26,7 +26,7 @@ public interface HomeworkMapper {
     public HomeworkDto homeworkGet( int lognum);
 
 
-    @Select("select * from homework where stnum = #{stnum}")
+    @Select("select * from homework where stnum = #{stnum}  order by hdate desc")
     public List<HomeworkDto> progressGet( int stnum);
 
     @Update("update homework set stnum = #{stnum}, progress = #{progress}, textbook = #{textbook}, " +
