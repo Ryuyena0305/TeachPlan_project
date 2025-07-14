@@ -7,6 +7,13 @@ export default function HomeworkDetail() {
   const { stnum } = useParams();
   const [homeworks, setHomeworks] = useState([]);
   const [student, setStudent] = useState(null);
+  const [newHomework, setNewHomework] = useState({
+  progress: "",
+  textbook: "",
+  page: "",
+  hdate: new Date().toISOString().split("T")[0]
+});
+
 
   useEffect(() => {
     fetchHomework();
@@ -16,7 +23,6 @@ export default function HomeworkDetail() {
   const fetchHomework = async () => {
     try {
       const res = await axios.get(`http://localhost:8080/api/progress/stnum/${stnum}`);
-     
       setHomeworks(res.data.map(hw => ({ ...hw, done: Boolean(hw.done) })));
     } catch (err) {
       console.error("숙제 불러오기 실패", err);
@@ -37,12 +43,11 @@ export default function HomeworkDetail() {
       const target = homeworks.find(hw => hw.lognum === lognum);
       const updated = {
         ...target,
-        done: currentDone ? 0 : 1, 
+        done: currentDone ? 0 : 1,
       };
 
       await axios.put(`http://localhost:8080/api/progress`, updated);
 
-    
       setHomeworks(prev =>
         prev.map(hw =>
           hw.lognum === lognum ? { ...hw, done: !currentDone } : hw
@@ -50,6 +55,28 @@ export default function HomeworkDetail() {
       );
     } catch (err) {
       console.error("숙제 상태 변경 실패", err);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setNewHomework(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const payload = {
+        ...newHomework,
+        stnum: parseInt(stnum),
+      };
+
+      await axios.post("http://localhost:8080/api/progress", payload);
+
+      setNewHomework({ progress: "", textbook: "", page: "", hdate: "" });
+      fetchHomework(); // 새로고침 없이 갱신
+    } catch (err) {
+      console.error("숙제 등록 실패", err);
     }
   };
 
@@ -65,6 +92,44 @@ export default function HomeworkDetail() {
         </div>
       )}
 
+      {/* 숙제 등록 폼 */}
+      <form className="homework-form" onSubmit={handleSubmit}>
+  <input
+    type="text"
+    name="progress"
+    placeholder="진도 내용"
+    value={newHomework.progress}
+    onChange={handleInputChange}
+    required
+  />
+  <input
+    type="text"
+    name="textbook"
+    placeholder="교재명"
+    value={newHomework.textbook}
+    onChange={handleInputChange}
+    required
+  />
+  <input
+    type="number"
+    name="page"
+    placeholder="페이지"
+    value={newHomework.page}
+    onChange={handleInputChange}
+    required
+  />
+  <input
+    type="date"
+    name="hdate"
+    value={newHomework.hdate}
+    onChange={handleInputChange}
+    required
+  />
+  <button type="submit">등록</button>
+</form>
+
+
+      {/* 숙제 리스트 */}
       <table className="homework-table">
         <thead>
           <tr>
@@ -77,9 +142,9 @@ export default function HomeworkDetail() {
         <tbody>
           {homeworks.map(hw => (
             <tr key={hw.lognum} className={hw.done ? "completed-row" : ""}>
-              <td>{hw.hdate }</td>
+              <td>{hw.hdate}</td>
               <td>{hw.progress}</td>
-              <td>{hw.textbook} {hw.page}</td>
+              <td>{hw.textbook} p.{hw.page}</td>
               <td>
                 <input
                   type="checkbox"

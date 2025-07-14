@@ -1,40 +1,126 @@
+/* 전체 컨테이너 */
 .homework-detail-container {
-  padding: 30px;
-  max-width: 800px;
-  margin: 0 auto;
-  background-color: #fdfdfd;
-  border-radius: 12px;
+  padding: 24px;
+  font-family: 'Segoe UI', 'Noto Sans KR', system-ui, sans-serif;
 }
 
-.student-info h3 {
+/* 제목 */
+h1, h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #222;
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
+  letter-spacing: -0.5px;
+  text-align: left;
 }
 
+/* 학생 정보 영역 */
+.student-info {
+  margin-bottom: 20px;
+}
+
+/* 숙제 등록 form - 한 줄 정렬 */
+.homework-form {
+  
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap; /* 화면 작아지면 줄 바꿈 */
+  width: 100%;
+}
+
+.homework-form input[type="text"],
+.homework-form input[type="number"],
+.homework-form input[type="date"] {
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  width: 150px;
+}
+
+.homework-form input[type="number"] {
+  width: 80px;
+}
+
+.homework-form button {
+  background: #4facfe;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 132, 255, 0.2);
+  transition: background 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+.homework-form button:hover {
+  background: #0072ff;
+  box-shadow: 0 4px 10px rgba(0, 115, 255, 0.25);
+}
+
+/* 숙제 테이블 */
 .homework-table {
   width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-
-.homework-table th,
-.homework-table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  text-align: center;
+  border-collapse: separate;
+  border-spacing: 0 8px;
 }
 
 .homework-table th {
-  background-color: #f1f3f5;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 18px;
+  text-align: center;
+  border-bottom: 2px solid #e2e8f0;
 }
+
+.homework-table td {
+  background-color: #ffffff;
+  font-size: 14px;
+  color: #374151;
+  padding: 14px 18px;
+  text-align: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
 
 .completed-row td {
+  background-color: #e0e0e0;
+  color: #888;
   text-decoration: line-through;
-  color: #999;
-  background-color: #f9f9f9;
 }
 
+
 input[type="checkbox"] {
-  transform: scale(1.2);
+  width: 16px;
+  height: 16px;
+  accent-color: black;
+  background-color: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+
+table, thead th, tbody td {
+  text-align: center;
+}
+
+
+.listContent {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.listContent:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
