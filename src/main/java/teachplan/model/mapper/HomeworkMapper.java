@@ -12,8 +12,8 @@ import java.util.List;
 
 @Mapper
 public interface HomeworkMapper {
-    @Insert("insert into homework(stnum,progress,textbook,page,done) values " +
-            "(#{stnum},#{progress},#{textbook},#{page},0)")
+    @Insert("insert into homework(stnum,progress,textbook,page,done,hdate) values " +
+            "(#{stnum},#{progress},#{textbook},#{page},0,#{hdate})")
     public int onPost( HomeworkDto homeworkDto);
 
     @Select("select * from homework")
