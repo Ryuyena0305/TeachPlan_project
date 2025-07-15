@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "../css/Sidebar.css";
 import Teacher from "../pages/Teacher";
 import Student from "../pages/Student";
+import Weekly  from "../pages/weekly";
 
 const Sidebar = () => {
   const menuGroups = [

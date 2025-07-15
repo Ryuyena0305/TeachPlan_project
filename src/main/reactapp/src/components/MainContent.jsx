@@ -6,7 +6,6 @@ import { Routes, Route } from "react-router-dom";
 // import ToDoList from "../pages/ToDoList.jsx";
 // import Students from "../pages/Students.jsx";
 // import Progress from "../pages/Progress.jsx";
-// import Weekly from "../pages/Weekly.jsx";
 // import ByTeacher from "../pages/ByTeacher.jsx";
 // import Extra from "../pages/Extra.jsx";
 import Homework from "../pages/homework.jsx";
@@ -15,6 +14,7 @@ import Teacherview from "../pages/Teacherview";
 import Student from "../pages/Student";
 import Studentview from "../pages/Studentview"
 import HomeworkDetail from "../pages/homeworkdetail.jsx";
+//import Weekly from "../pages/Weekly.jsx";
 
 function MainContent() {
   return (
@@ -32,6 +32,8 @@ function MainContent() {
       <Route path="/teacherview" element={<Teacherview />} />
       <Route path="/student" element={<Student />} />
       <Route path="/studentview" element={<Studentview />} />
+      {/*<Route path="/weekly/:tnum/:week" element={<Weekly />} />
+
 
       {/* 기본 페이지 */}
       {/* <Route path="*" element={<Dashboard />} /> */}
