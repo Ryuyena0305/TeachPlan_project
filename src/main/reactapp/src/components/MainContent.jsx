@@ -14,7 +14,7 @@ import Teacherview from "../pages/Teacherview";
 import Student from "../pages/Student";
 import Studentview from "../pages/Studentview"
 import HomeworkDetail from "../pages/homeworkdetail.jsx";
-//import Weekly from "../pages/Weekly.jsx";
+import Weekly from "../pages/Weekly.jsx";
 
 function MainContent() {
   return (
@@ -32,7 +32,7 @@ function MainContent() {
       <Route path="/teacherview" element={<Teacherview />} />
       <Route path="/student" element={<Student />} />
       <Route path="/studentview" element={<Studentview />} />
-      {/*<Route path="/weekly/:tnum/:week" element={<Weekly />} />
+      <Route path="/weekly" element={<Weekly />} />
 
 
       {/* 기본 페이지 */}
