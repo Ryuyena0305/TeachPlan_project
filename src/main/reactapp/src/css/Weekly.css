@@ -1,0 +1,47 @@
+.weekly-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.teacher-select {
+  margin-bottom: 20px;
+}
+
+select {
+  padding: 6px 10px;
+  font-size: 16px;
+}
+
+.weekly-grid {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.weekly-grid th,
+.weekly-grid td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  vertical-align: top;
+  min-width: 120px;
+}
+
+.weekly-grid th {
+  background-color: #f8f9fa;
+}
+
+.lecture-badge {
+  margin: 6px 0;
+  padding: 6px 10px;
+  border-left: 5px solid #888;
+  border-radius: 6px;
+  font-size: 14px;
+  text-align: left;
+  color: #333;
+  font-weight: 500;
+}
+
+.empty-slot {
+  color: #aaa;
+  font-style: italic;
+}
