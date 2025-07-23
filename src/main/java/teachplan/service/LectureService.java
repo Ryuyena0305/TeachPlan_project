@@ -27,9 +27,9 @@ public class LectureService {
     }
 
 
-    public List<LectureDto> teacherWeekGet(int tnum, String week){
+    public List<LectureDto> teacherWeekGet(int tnum){
         System.out.println("LectureService.teacherWeekGet");
-        return lectureMapper.teacherWeekGet(tnum,week);
+        return lectureMapper.teacherWeekGet(tnum);
     }
     public List<LectureDto> teacherlectureGet(int tnum, boolean lecturetype){
         System.out.println("LectureService.teacherlectureGet");

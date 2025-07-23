@@ -30,10 +30,15 @@ public class LectureController {
         System.out.println("LectureController.teacherGet");
         return lectureService.teacherGet(tnum);
     }
+//    @GetMapping("/teacherweek")
+//    public List<LectureDto> teacherWeekGet(@RequestParam("tnum") int tnum, @RequestParam("week")String week){
+//        System.out.println("LectureController.teacherGet");
+//        return lectureService.teacherWeekGet(tnum,week);
+//    }
     @GetMapping("/teacherweek")
-    public List<LectureDto> teacherWeekGet(@RequestParam("tnum") int tnum, @RequestParam("week")String week){
+    public List<LectureDto> teacherWeekGet(@RequestParam("tnum") int tnum){
         System.out.println("LectureController.teacherGet");
-        return lectureService.teacherWeekGet(tnum,week);
+        return lectureService.teacherWeekGet(tnum);
     }
 
     @GetMapping("/teachertype")

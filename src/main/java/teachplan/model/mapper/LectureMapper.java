@@ -22,8 +22,8 @@ public interface LectureMapper {
 
     @Select("SELECT lecture.lnum,lecture.stnum,lecture.week,lecture.starttime,lecture.endtime,lecture.lecturetype,student.stname,teacher.tname " +
             "FROM lecture JOIN student ON lecture.stnum = student.stnum JOIN teacher ON student.tnum = teacher.tnum " +
-            "WHERE teacher.tnum = #{tnum} AND lecture.week = #{week} ORDER BY lecture.week ")
-    public List<LectureDto> teacherWeekGet(int tnum, String week);
+            "WHERE teacher.tnum = #{tnum} ")
+    public List<LectureDto> teacherWeekGet(int tnum);
 
     @Select("SELECT teacher.tname, lecture.week, lecture.starttime, lecture.endtime, lecture.lecturetype, student.stname " +
             "FROM lecture JOIN student ON lecture.stnum = student.stnum JOIN teacher ON student.tnum = teacher.tnum WHERE teacher.tnum = #{tnum} " +
