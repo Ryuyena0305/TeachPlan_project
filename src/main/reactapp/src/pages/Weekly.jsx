@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import "../css/Weekly.css";
 
@@ -46,21 +46,38 @@ export default function Weekly() {
       return {
         date: d.toISOString().split("T")[0],
         label: `${["일", "월", "화", "수", "목", "금", "토"][i]} (${d.getMonth() + 1}/${d.getDate()})`,
+        dayName: ["일", "월", "화", "수", "목", "금", "토"][i],
       };
     });
   };
 
-  const groupedByDate = getWeekDates().map(({ date, label }) => {
-    const lectures = weeklyData.filter((lec) => lec.hdate === date);
-    return { date, label, lectures };
+  const weekDays = getWeekDates();
+
+  const groupedByWeekday = weekDays.map(({ label, dayName }) => {
+    const lectures = weeklyData.filter((lec) => lec.week === dayName);
+    return { label, lectures };
   });
 
-  // 이름 기준 색상 고정 (선택적)
-  const getBadgeColor = (name) => {
-    const colors = ["#d0ebff", "#d3f9d8", "#fff3bf", "#ffd6d6", "#e5dbff"];
-    const index = name.charCodeAt(0) % colors.length;
-    return colors[index];
-  };
+  const nameColorMap = useMemo(() => {
+    const baseColors = [
+      "#d0ebff", "#d3f9d8", "#fff3bf", "#ffd6d6",
+      "#e5dbff", "#ffd8a8", "#e6fcf5", "#f3d9fa", "#c5f6fa", "#ffe066"
+    ];
+
+    // Fisher-Yates shuffle
+    const shuffledColors = [...baseColors];
+    for (let i = shuffledColors.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledColors[i], shuffledColors[j]] = [shuffledColors[j], shuffledColors[i]];
+    }
+
+    const uniqueNames = [...new Set(weeklyData.map((lec) => lec.stname))];
+    const map = {};
+    uniqueNames.forEach((name, i) => {
+      map[name] = shuffledColors[i % shuffledColors.length];
+    });
+    return map;
+  }, [weeklyData]);
 
   return (
     <div className="weekly-container">
@@ -81,23 +98,26 @@ export default function Weekly() {
         <table className="weekly-grid">
           <thead>
             <tr>
-              {groupedByDate.map((day) => (
-                <th key={day.date}>{day.label}</th>
+              {groupedByWeekday.map((day) => (
+                <th key={day.label}>{day.label}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              {groupedByDate.map((day) => (
-                <td key={day.date}>
+              {groupedByWeekday.map((day) => (
+                <td key={day.label}>
                   {day.lectures.length > 0 ? (
                     day.lectures.map((lec, idx) => (
                       <div
                         key={idx}
                         className="lecture-badge"
-                        style={{ backgroundColor: getBadgeColor(lec.stname) }}
+                        style={{ backgroundColor: nameColorMap[lec.stname] }}
                       >
-                        {lec.stname} : {lec.stime}
+                        {lec.stname} : {lec.starttime?.slice(0, 5)}
+                        {!lec.lecturetype && (
+                          <span className="dot" title="보충수업"></span>
+                        )}
                       </div>
                     ))
                   ) : (
