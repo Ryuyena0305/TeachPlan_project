@@ -35,7 +35,7 @@ insert into lecture(stnum,week,starttime,endtime,lecturetype) values
 insert into lecture(stnum,week,starttime,endtime,lecturetype) values
 (4,'화','18:00:00','20:00:00',1),(3,'목','18:00:00','20:00:00',1);
 insert into lecture(stnum,week,starttime,endtime,lecturetype) values
-(5,'월','18:00:00','20:00:00',1),(5,'수','20:00:00','22:00:00',1),(5,'금','20:00:00','22:00:00',1);
+(5,'월','18:00:00','20:00:00',1),(5,'수','20:00:00','22:00:00',0),(5,'금','20:00:00','22:00:00',0);
 insert into lecture(stnum,week,starttime,endtime,lecturetype) values
 (6,'월','16:00:00','18:00:00',1),(5,'수','16:00:00','18:00:00',1),(5,'금','16:00:00','18:00:00',1);
 insert into lecture(stnum,week,starttime,endtime,lecturetype) values
