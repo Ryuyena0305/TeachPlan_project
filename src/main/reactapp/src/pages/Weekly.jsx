@@ -121,7 +121,7 @@ export default function Weekly() {
                       </div>
                     ))
                   ) : (
-                    <div className="empty-slot">-</div>
+                    <div className="empty-slot">강의 없음</div>
                   )}
                 </td>
               ))}
